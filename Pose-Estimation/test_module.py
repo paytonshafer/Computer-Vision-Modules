@@ -5,11 +5,15 @@ from pose_estimate_module import PoseEstimator
 pTime = 0
 cTime = 0
 
-cap = cv2.VideoCapture('PoseVideos/1.mp4') #set the camera
+cap = cv2.VideoCapture('PoseVideos/2.mp4') #set the camera
 detector = PoseEstimator()
 
 while 1: #infiite loop
     success, img = cap.read() #capture a frame
+
+    if not success:
+        break
+
     img = cv2.flip(img,1) #this line makes the camera act as a mirror
 
     img = detector.getPose(img)
