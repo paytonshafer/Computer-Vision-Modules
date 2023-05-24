@@ -11,16 +11,17 @@ detector = PoseEstimator()
 while 1: #infiite loop
     success, img = cap.read() #capture a frame
 
-    if not success:
+    if not success: #if the video is done then break
         break
 
     img = cv2.flip(img,1) #this line makes the camera act as a mirror
 
-    img = detector.getPose(img)
+    img = detector.getPose(img) #get the pose
 
-    lmList = detector.getPos(img, draw=False)
+    lmList = detector.getPos(img, draw=False) #get the positions
     if len(lmList) != 0:
-        print(lmList[4]) #get pos of tip of thumb
+        #draw blue circle on right elblow
+        cv2.circle(img, (lmList[14][1], lmList[14][2]), 10, (255, 0, 0), cv2.FILLED)
 
     #getting fps
     cTime = time.time()
