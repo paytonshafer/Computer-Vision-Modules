@@ -2,19 +2,21 @@ import cv2
 import time
 from hand_track_module import HandDetector
 
+#time set up for fps
 pTime = 0
 cTime = 0
 
 cap = cv2.VideoCapture(0) #set the camera
-detector = HandDetector()
+detector = HandDetector() #create the hand detector, can add params
 
 while 1: #infiite loop
     success, img = cap.read() #capture a frame
     img = cv2.flip(img,1) #this line makes the camera act as a mirror
 
-    img = detector.getHands(img)
+    img = detector.getHands(img) #function to get hands from an img
 
-    lmList = detector.getPos(img, draw=False)
+    #generate the list of landmarks
+    lmList = detector.getPos(img, draw=True)
     if len(lmList) != 0:
         print(lmList[4]) #get pos of tip of thumb
 
