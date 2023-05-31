@@ -11,12 +11,9 @@ detector = FaceDetector()
 while 1: #infiite loop
     success, img = cap.read() #capture a frame
 
-    if not success: #if the video is done then break
-        break
-
     img = cv2.flip(img,1) #this line makes the camera act as a mirror
 
-    img, bbox = detector.getFace(img) #get the pose
+    img, bbox = detector.getFace(img) #get the faces and data
 
     #getting fps
     cTime = time.time()
