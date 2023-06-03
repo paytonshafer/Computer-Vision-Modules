@@ -7,7 +7,7 @@ pTime = 0
 cTime = 0
 
 cap = cv2.VideoCapture(0) #set the camera
-detector = FaceMesh() #create the hand detector, can add params
+detector = FaceMesh() #create the face detector, can add params
 
 while 1: #infiite loop
     success, img = cap.read() #capture a frame
